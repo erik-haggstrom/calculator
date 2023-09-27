@@ -20,6 +20,7 @@
   .screen {
     display: inline-block;
     height: 100px;
+    outline: 1px solid;
   }
 
   .buttons {
@@ -34,14 +35,31 @@
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
+    outline: 1px solid;
   }
 
   .number {
     width: 90px;
     height: 90px;
-    text-align: center;
+    outline: 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .operatorBox {
     width: 32.5%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    outline: 1px solid;
+  }
+
+  .operatingKeys {
+    width: 65px;
+    height: 65px;
+    outline: 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
