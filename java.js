@@ -14,11 +14,12 @@ function div (a, b) {
   return a / b;
 }
 
-let firstNumber;
+let firstNumber = "";
 let operatorType;
 let secondNumber;
+let result;
 
-function operator (fN, o, sN) {
+function operator(fN, o, sN) {
   if (o === '+') {
     return add(fN, sN);
   }
@@ -36,6 +37,7 @@ let screen = document.querySelector('.screen');
 
 
 function screenAdder() {
+  screen.textContent = "";
   screen.textContent += displayValue;
 
 }
@@ -43,14 +45,29 @@ function screenAdder() {
 let displayValue = 0;
 
 function selectNumber(number) {
-  if (!firstNumber) {
-    firstNumber = number;
+  if (!operatorType) {
+    firstNumber += number;
   }
-  else if(!secondNumber){
-    secondNumber = number;
+  else if(operatorType){
+    secondNumber += number;
   }
   else {
 
+  }
+}
+
+function reset() {
+  firstNumber = null;
+  operatorType = null;
+  secondNumber = null;
+}
+
+function limiter() {
+  if (firstNumber && operatorType && secondNumber) {
+    result = operator(firstNumber, operatorType, secondNumber);
+    screen.textContent = result;
+    reset();
+    selectNumber(result)
   }
 }
 
@@ -61,6 +78,7 @@ one.addEventListener('click', () => {
   selectNumber(1)
   displayValue = 1;
   screenAdder();
+  limiter();
 });
 
 const two = document.querySelector('.two');
@@ -68,6 +86,7 @@ two.addEventListener('click', () => {
   selectNumber(2)
   displayValue = 2;
   screenAdder();
+  limiter();
 });
 
 const three = document.querySelector('.three');
@@ -75,6 +94,7 @@ three.addEventListener('click', () => {
   selectNumber(3)
   displayValue = 3;
   screenAdder();
+  limiter();
 });
 
 const four = document.querySelector('.four');
@@ -82,6 +102,7 @@ four.addEventListener('click', () => {
   selectNumber(4)
   displayValue = 4;
   screenAdder();
+  limiter();
 });
 
 const five = document.querySelector('.five');
@@ -89,6 +110,7 @@ five.addEventListener('click', () => {
   selectNumber(5)
   displayValue = 5;
   screenAdder();
+  limiter();
 });
 
 const six = document.querySelector('.six');
@@ -96,6 +118,7 @@ six.addEventListener('click', () => {
   selectNumber(6)
   displayValue = 6;
   screenAdder();
+  limiter();
 });
 
 const seven = document.querySelector('.seven');
@@ -103,6 +126,7 @@ seven.addEventListener('click', () => {
   selectNumber(7)
   displayValue = 7;
   screenAdder();
+  limiter();
 });
 
 const eight = document.querySelector('.eight');
@@ -110,6 +134,7 @@ eight.addEventListener('click', () => {
   selectNumber(8)
   displayValue = 8;
   screenAdder();
+  limiter();
 });
 
 const nine = document.querySelector('.nine');
@@ -117,6 +142,7 @@ nine.addEventListener('click', () => {
   selectNumber(9)
   displayValue = 9;
   screenAdder();
+  limiter();
 });
 
 const plus = document.querySelector('.plus');
@@ -157,7 +183,14 @@ clear.addEventListener('click', () => {
 
 const lika = document.querySelector('.lika');
 lika.addEventListener('click', () => {
-  
+  if (firstNumber && operatorType && secondNumber) {
+    screen.textContent = ""
+    result = operator(firstNumber, operatorType, secondNumber);
+    screen.textContent = result;
+    reset();
+    selectNumber(result)
+  }
+  else{}
 });
 
 
