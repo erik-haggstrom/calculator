@@ -11,12 +11,17 @@ function multiply (a, b) {
 }
 
 function div (a, b) {
-  return a / b;
+  if(b == 0) {
+    screen.textContent = "Cant divide by zero"
+  }
+  else {
+    return a / b;
+  }
 }
 
 let firstNumber = "";
 let operatorType;
-let secondNumber;
+let secondNumber = "";
 let result;
 
 function operator(fN, o, sN) {
@@ -44,12 +49,14 @@ function screenAdder() {
 
 let displayValue = 0;
 
-function selectNumber(number) {
+function selectNumber(number) { // väljer första nummer och metod
   if (!operatorType) {
-    firstNumber += number;
+    firstNumber += number.toString();
+    firstNumber = parseFloat(firstNumber);
   }
   else if(operatorType){
-    secondNumber += number;
+    secondNumber += number.toString();
+    secondNumber = parseFloat(secondNumber);
   }
   else {
 
@@ -57,9 +64,9 @@ function selectNumber(number) {
 }
 
 function reset() {
-  firstNumber = null;
+  firstNumber = "";
   operatorType = null;
-  secondNumber = null;
+  secondNumber = "";
 }
 
 function limiter() {
@@ -176,9 +183,9 @@ dela.addEventListener('click', () => {
 const clear = document.querySelector('.clear');
 clear.addEventListener('click', () => {
   screen.textContent = "";
-  firstNumber = null;
+  firstNumber = "";
   operatorType = null;
-  secondNumber = null;
+  secondNumber = "";
 });
 
 const lika = document.querySelector('.lika');
